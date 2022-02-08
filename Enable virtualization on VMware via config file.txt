@@ -1,0 +1,6 @@
+#Add the following 4 lines of code at the end of the file:
+
+monitor.virtual_mmu = "hardware"
+monitor.virtual_exec = "hardware"
+vhv.enable = "TRUE"
+monitor_control.restrict_backdoor = "true"
