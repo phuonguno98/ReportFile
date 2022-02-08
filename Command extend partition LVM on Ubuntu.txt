@@ -1,0 +1,20 @@
+1) Install tool growpart for support resize partition:
+#apt-get install cloud-guest-utils xfsprogs -y
+
+2) Expand space for partition sda5 (partition containing root):
+#growpart /dev/sda 5
+
+3) Increase space for root partition:
+#pvresize /dev/sda5
+
+4) Resize LV root partition (cl-root):
+#lvextend -l +100%FREE /dev/mapper/eve--ng--vg-root
+
+5) Update the filesystem:
+For type: xfs
+#xfs_growfs /dev/mapper/eve--ng--vg-root
+
+For type: ext4
+#mkfs.ext4 /dev/mapper/eve--ng--vg-root
+6) Review again:
+#lsblk
